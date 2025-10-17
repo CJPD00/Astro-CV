@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import FloatButtons from "../components/FloatButtons.astro";
 ---
 
 <!doctype html>
@@ -9,7 +10,7 @@ import "../styles/global.css";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro Basics</title>
+    <title>Carlos Pacheco Portfolio</title>
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link
@@ -22,7 +23,8 @@ import "../styles/global.css";
     />
   </head>
   <body class="bg-[#101922] font-display text-slate-200">
-    <div class="flex min-h-screen flex-col bg-[#101922]/90">
+    <FloatButtons />
+    <div id="init" class="flex min-h-screen flex-col bg-[#101922]/90">
       <slot />
     </div>
   </body>

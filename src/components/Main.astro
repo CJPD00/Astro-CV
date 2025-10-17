@@ -24,17 +24,17 @@ import avatar from "../assets/experto-ciberseguridad-que-trabaja-tecnologia-luce
       <p class="text-slate-500 dark:text-slate-400">{info.direction.city}</p>
     </div>
     <div class="mt-16 space-y-16">
-      <section>
+      <section id="about">
         <h3 class="text-2xl font-bold text-slate-900 dark:text-white">
           About Me
         </h3>
         <p
-          class="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-300 sm:text-lg "
+          class="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-300 sm:text-lg"
         >
           {info.resume}
         </p>
       </section>
-      <section>
+      <section id="skills">
         <h3 class="text-2xl font-bold text-slate-900 dark:text-white">
           Skills
         </h3>
@@ -48,42 +48,26 @@ import avatar from "../assets/experto-ciberseguridad-que-trabaja-tecnologia-luce
           }
         </div>
       </section>
-      <section>
+      <section id="experience">
         <h3 class="text-2xl font-bold text-white">Experience</h3>
         <div class="relative mt-6 border-l-2 pl-8 border-slate-700">
-          <div class="mb-10">
-            <div
-              class="absolute -left-[11px] top-1 h-5 w-5 rounded-full bg-[#137fec]"
-            >
-            </div>
-            <p class="font-semibold text-white">
-              Senior Software Engineer at Tech Innovators Inc.
-            </p>
-            <p class="text-sm text-slate-400">2019 - Present</p>
-          </div>
-          <div class="mb-10">
-            <div
-              class="absolute -left-[11px] top-1 h-5 w-5 rounded-full bg-[#137fec]"
-            >
-            </div>
-            <p class="font-semibold text-white">
-              Software Engineer at CodeCrafters LLC
-            </p>
-            <p class="text-sm text-slate-400">2017 - 2019</p>
-          </div>
-          <div>
-            <div
-              class="absolute -left-[11px] top-1 h-5 w-5 rounded-full bg-[#137fec]"
-            >
-            </div>
-            <p class="font-semibold text-white">
-              Junior Developer at WebSolutions Co.
-            </p>
-            <p class="text-sm text-slate-400">2015 - 2017</p>
-          </div>
+          {
+            info.experience.map((experience) => (
+              <div class="mb-10">
+                <div class="absolute -left-[11px] top-1 h-5 w-5 rounded-full bg-[#137fec]" />
+                <p class="font-semibold text-white">
+                  {experience.position} at {experience.enterprise}
+                </p>
+                <p class="text-sm text-slate-400">{experience.time}</p>
+                <p class="mt-2 text-sm text-slate-400">
+                  {experience.description}
+                </p>
+              </div>
+            ))
+          }
         </div>
       </section>
-      <section>
+      <section id="projects">
         <h3 class="text-2xl font-bold text-slate-900 dark:text-white">
           Projects
         </h3>
@@ -150,49 +134,57 @@ import avatar from "../assets/experto-ciberseguridad-que-trabaja-tecnologia-luce
           </div>
         </div>
       </section>
-      <section>
-        <h3 class="text-2xl font-bold text-slate-900 dark:text-white">
-          Contact
-        </h3>
-        <form class="mt-6 space-y-4">
-          <div>
-            <label
-              class="block text-sm font-medium text-slate-600 dark:text-slate-300"
-              for="email">Email</label
-            >
-            <input
-              class="form-input mt-1 block w-full rounded border-slate-300 bg-background-light text-slate-900 shadow-sm focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-background-dark dark:text-white"
-              id="email"
-              type="email"
-            />
+      <section id="education">
+        <h3 class="text-2xl font-bold text-white">Education</h3>
+        <div class="mt-6 space-y-4">
+          <div class="rounded-lg p-6 bg-slate-900/50">
+            <p class="font-semibold text-white">
+              {info.education.school}
+            </p>
+            <p class="text-slate-300">
+              {info.education.degree}
+            </p>
+            <p class="text-sm text-slate-400">
+              {info.education.time}
+            </p>
           </div>
-          <div>
-            <label
-              class="block text-sm font-medium text-slate-600 dark:text-slate-300"
-              for="phone">Phone</label
-            >
-            <input
-              class="form-input mt-1 block w-full rounded border-slate-300 bg-background-light text-slate-900 shadow-sm focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-background-dark dark:text-white"
-              id="phone"
-              type="tel"
-            />
-          </div>
-          <div>
-            <label
-              class="block text-sm font-medium text-slate-600 dark:text-slate-300"
-              for="linkedin">LinkedIn</label
-            >
-            <input
-              class="form-input mt-1 block w-full rounded border-slate-300 bg-background-light text-slate-900 shadow-sm focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-background-dark dark:text-white"
-              id="linkedin"
-              type="url"
-            />
-          </div>
-          <button
-            class="rounded-lg bg-primary px-6 py-3 font-semibold text-white transition-opacity hover:opacity-90"
-            type="submit">Send Message</button
-          >
-        </form>
+        </div>
+      </section>
+      <section id="languages">
+        <h3 class="text-2xl font-bold text-white">Languages</h3>
+        <div class="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {
+            info.lenguages.map((language) => (
+              <div class="flex flex-col">
+                <div class="flex items-center justify-between">
+                  <p class="font-medium  text-slate-300">{language.name}</p>
+                  <p class="text-sm  text-slate-400">
+                    {language.level}{" "}
+                    {language.level === "B1"
+                      ? "Limited Working Proficiency"
+                      : language.level === "B2"
+                        ? "Intermediate"
+                        : "Advanced"}
+                  </p>
+                </div>
+                <div class="mt-1 h-2 w-full rounded-full  bg-slate-700">
+                  <div
+                    class="h-2 rounded-full bg-[#137fec]"
+                    style={
+                      language.level === "Native"
+                        ? "width: 100%"
+                        : language.level === "B1"
+                          ? "width: 30%"
+                          : language.level === "B2"
+                            ? "width: 60%"
+                            : "width: 90%"
+                    }
+                  />
+                </div>
+              </div>
+            ))
+          }
+        </div>
       </section>
     </div>
   </div>

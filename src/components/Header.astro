@@ -2,6 +2,43 @@
 import avatar from "../assets/experto-ciberseguridad-que-trabaja-tecnologia-luces-neon_23-2151645607.jpg";
 ---
 
+<script>
+  let menuOpen = false;
+
+  function toggleMenu() {
+    menuOpen = !menuOpen;
+    const mobileMenu = document.getElementById("mobile-menu");
+    if (mobileMenu) {
+      if (menuOpen) {
+        mobileMenu.classList.remove("menu-closed");
+        mobileMenu.classList.add("menu-open");
+      } else {
+        mobileMenu.classList.remove("menu-open");
+        mobileMenu.classList.add("menu-closed");
+      }
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuButton = document.getElementById("menu-button");
+    if (menuButton) {
+      menuButton.addEventListener("click", toggleMenu);
+    }
+
+    const menuLinks = document.querySelectorAll("#mobile-menu a");
+    menuLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        menuOpen = false;
+        const mobileMenu = document.getElementById("mobile-menu");
+        if (mobileMenu) {
+          mobileMenu.classList.remove("menu-open");
+          mobileMenu.classList.add("menu-closed");
+        }
+      });
+    });
+  });
+</script>
+
 <header
   class="sticky top-0 z-50 w-full border-b backdrop-blur-lg border-slate-800/50 bg-[#101922]/80"
 >
@@ -20,41 +57,67 @@ import avatar from "../assets/experto-ciberseguridad-que-trabaja-tecnologia-luce
             fill="currentColor"
             fill-rule="evenodd"></path>
         </svg>
-        <h1 class="text-lg font-bold text-slate-900 dark:text-white">
-          Carlos Javier Portfolio
-        </h1>
+        <h1 class="text-lg font-bold text-white">Carlos Pacheco Portfolio</h1>
       </div>
       <nav class="hidden items-center gap-8 md:flex">
         <a
-          class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-primary"
-          href="#">About</a
+          class="text-sm font-medium text-slate-300 hover:text-[#137fec]"
+          href="#about">About</a
         >
         <a
-          class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-primary"
-          href="#">Resume</a
+          class="text-sm font-medium text-slate-300 hover:text-[#137fec]"
+          href="#skills">Skills</a
         >
         <a
-          class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-primary"
-          href="#">Projects</a
+          class="text-sm font-medium text-slate-300 hover:text-[#137fec]"
+          href="#experience">Experience</a
         >
         <a
-          class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-primary"
-          href="#">Contact</a
+          class="text-sm font-medium text-slate-300 hover:text-[#137fec]"
+          href="#education">Education</a
         >
-        <!-- <button
-          class="rounded-full bg-slate-200 p-2 text-slate-600 hover:bg-slate-300 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
+        <a
+          class="text-sm font-medium text-slate-300 hover:text-[#137fec]"
+          href="#languages">Languages</a
         >
-          <span class="material-symbols-outlined"> language </span>
-        </button> -->
-        <img
-          class="h-10 w-10 rounded-full bg-cover bg-center"
-          src={avatar.src}
-          alt="Avatar"
-        />
+        <a href="#init">
+          <img
+            class="h-10 w-10 rounded-full bg-cover bg-center"
+            src={avatar.src}
+            alt="Avatar"
+          />
+        </a>
       </nav>
-      <button class="md:hidden">
+      <button id="menu-button" class="md:hidden">
         <span class="material-symbols-outlined"> menu </span>
       </button>
     </div>
+  </div>
+  <div
+    id="mobile-menu"
+    class="menu-closed md:hidden bg-[#101922]/80 border-t border-slate-800/50"
+  >
+    <nav class="flex flex-col items-center py-4 gap-4">
+      <a
+        class="text-sm font-medium text-slate-300 hover:text-[#137fec]"
+        href="#about">About</a
+      >
+      <a
+        class="text-sm font-medium text-slate-300 hover:text-[#137fec]"
+        href="#skills">Skills</a
+      >
+      <a
+        class="text-sm font-medium text-slate-300 hover:text-[#137fec]"
+        href="#experience">Experience</a
+      >
+      <a
+        class="text-sm font-medium text-slate-300 hover:text-[#137fec]"
+        href="#education">Education</a
+      >
+      <a
+        class="text-sm font-medium text-slate-300 hover:text-[#137fec]"
+        href="#languages">Languages</a
+      >
+    </nav>
   </div>
 </header>
